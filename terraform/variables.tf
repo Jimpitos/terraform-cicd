@@ -1,0 +1,26 @@
+variable "resource_group_name" {
+  description = "Nome do Resource Group"
+  type        = string
+  default     = "rg-datalake-dev"
+}
+
+variable "location" {
+  description = "Regiao Azure"
+  type        = string
+  default     = "eastus" # Alterado de "brazilsouth" para evitar o erro de politica (RequestDisallowedByAzure)
+}
+
+variable "storage_account_name" {
+  description = "Nome da Storage Account"
+  type        = string
+  default     = "stdatalakedev001" # Ok! Sem hífens e com letras minúsculas/números
+}
+
+variable "tags" {
+  description = "Tags padrao dos recursos"
+  type        = map(string)
+  default = {
+    ambiente = "dev"
+    projeto  = "datalake-inep"
+  }
+}
