@@ -33,7 +33,7 @@ resource "azurerm_storage_account" "storage" {
 }
 
 resource "azurerm_storage_container" "medallion-bronze" {
-  name                  = "bronze"
-  storage_account_id    = azurerm_storage_account.storage.id
+  name                  = "bronze" # ou o nome que você definiu para o container
+  storage_account_name  = azurerm_storage_account.storage.name
   container_access_type = "private"
 }
