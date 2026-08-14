@@ -31,3 +31,9 @@ resource "azurerm_storage_account" "storage" {
 
   tags = var.tags
 }
+
+resource "azurerm_storage_container" "medallion-bronze" {
+  name                  = "bronze" # ou o nome que você definiu para o container
+  storage_account_name  = azurerm_storage_account.storage.name
+  container_access_type = "private"
+}
