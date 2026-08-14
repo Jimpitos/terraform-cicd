@@ -13,7 +13,7 @@ variable "location" {
 variable "storage_account_name" {
   description = "Nome da Storage Account"
   type        = string
-  default     = "stdatalakedev001" # Ok! Sem hífens e com letras minúsculas/números
+  default     = "stdatalakedev001x" # Ok! Sem hífens e com letras minúsculas/números
 }
 
 variable "tags" {
