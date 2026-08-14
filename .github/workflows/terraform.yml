@@ -39,8 +39,8 @@ jobs:
           terraform_version: "1.7.5"
 
       - name: Terraform Init
+        working-directory: ${{ env.TF_WORKING_DIR }}
         run: terraform init
-        working-directory: terraform # (caso seus arquivos .tf estejam dentro da pasta /terraform)
 
       - name: Terraform Validate
         working-directory: ${{ env.TF_WORKING_DIR }}
@@ -71,11 +71,11 @@ jobs:
       - name: Falhar job se plan falhou
         if: steps.plan.outcome == 'failure'
         run: exit 1
+
   apply:
     name: Terraform Apply
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    environment: production
     permissions:
       contents: read
     env:
@@ -99,8 +99,8 @@ jobs:
           terraform_version: "1.7.5"
 
       - name: Terraform Init
+        working-directory: ${{ env.TF_WORKING_DIR }}
         run: terraform init
-        working-directory: terraform # (caso seus arquivos .tf estejam dentro da pasta /terraform)
 
       - name: Terraform Apply
         working-directory: ${{ env.TF_WORKING_DIR }}
